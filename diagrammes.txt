@@ -1,0 +1,58 @@
+                   +-------------------+
+                   |     RayTracer     |
+                   +-------------------+
+                            |
+                            |
+             +--------------v------------+
+             |                           |
+    +--------v--------+      +-----------v------------+
+    |     Camera      |      |        Scene           |
+    +-----------------+      +------------------------+
+             |                           |
+             |                           |
+    +--------v--------+      +-----------v------------+
+    |      Ray        |      |         Object         |
+    +-----------------+      +------------------------+
+
+
+
+Classe Ray :
+    Attributs :
+        origin (tuple) : Le point d'origine du rayon.
+        direction (tuple) : La direction du rayon.
+    Méthodes :
+        Aucune méthode spécifique, mais des méthodes pour la création, la transformation et l'intersection du rayon seront nécessaires.
+
+Classe Camera :
+    Attributs :
+        position (tuple) : La position de la caméra.
+        look_at (tuple) : Le point que la caméra regarde.
+        up (tuple) : Le vecteur "haut" de la caméra.
+    Méthodes :
+        Aucune méthode spécifique, mais des méthodes pour générer des rayons à partir de la caméra seront nécessaires.
+
+Classe Sphere :
+    Attributs :
+        center (tuple) : Le centre de la sphère.
+        radius (float) : Le rayon de la sphère.
+        color (tuple) : La couleur de la sphère.
+        material (classe Material) : Les propriétés matérielles de la sphère (par exemple, réflexion, réfraction, brillance, etc.).
+    Méthodes :
+        intersection(ray) : Méthode pour vérifier si un rayon intersecte la sphère et retourner les informations d'intersection.
+        normal_at(point) : Méthode pour calculer la normale à la sphère à un point donné.
+
+Classe Light :
+    Attributs :
+        position (tuple) : La position de la source lumineuse.
+        intensity (float) : L'intensité lumineuse de la source.
+        color (tuple) : La couleur de la lumière.
+    Méthodes :
+        Aucune méthode spécifique, mais des méthodes pour calculer l'impact de la lumière sur les objets de la scène seront nécessaires.
+
+Classe Scene :
+    Attributs :
+        camera (classe Camera) : La caméra de la scène.
+        objects (liste d'objets géométriques) : La liste des objets dans la scène (sphères, cylindres, plans, cubes, etc.).
+        lights (liste de sources lumineuses) : La liste des sources lumineuses dans la scène.
+    Méthodes :
+        Aucune méthode spécifique, mais des méthodes pour le rendu de la scène, le traçage de rayons, l'éclairage, etc., seront nécessaires.
