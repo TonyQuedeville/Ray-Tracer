@@ -27,15 +27,15 @@ def main():
     # image = Image(seq)
     # classe = image
     
-    # seq = ('pillule', 1)    
-    # pillule = Pillule(seq)
-    # classe = pillule
+    seq = ('pillule', 1)    
+    pillule = Pillule(seq)
+    classe = pillule
     
-    seq = ('clown', 31)    
+    # seq = ('clown', 31)    
     # clown = Clown(seq)
     # classe = clown
     
-    # generate_sequence(classe) 
+    generate_sequence(classe) 
     
     if play_sequence(seq) is None:
         print("Pas de sequence !")

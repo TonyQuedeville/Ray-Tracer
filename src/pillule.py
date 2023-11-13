@@ -43,11 +43,11 @@ class Pillule:
         plan = Plane((0, 1.2, 0), (0, -1, 0), (.5, .5, .5))
         
         # Pillule moitier haute
-        sphere_H = Sphere((1.5, -1.3, 3), .5, (1, 0, 0))
-        cylindre_H = Cylinder((1.5, -1.3, 3), .5, .5, (1, 0, 0))
+        sphere_H = Sphere((1.5, -1.3, 3), 1, (1, 0, 0))
+        cylindre_H = Cylinder((1.5, -1.3, 3), 1, .5, (1, 0, 0))
         # Pillule moitier basse
-        sphere_B = Sphere((1.5, -.3, 3), .5, (1, 1, 1))
-        cylindre_B = Cylinder((1.5, -.8, 3), .5, .5, (1, 1, 1))
+        sphere_B = Sphere((1.5, -.3, 3), 1, (1, 1, 1))
+        cylindre_B = Cylinder((1.5, -.8, 3), 1, .5, (1, 1, 1))
         
         # Cube
         cube = Cube((.25, .6, 2), (.35, .35, .35), (.3, 0, .7))
@@ -57,9 +57,12 @@ class Pillule:
         cube_b = Cube((-1.7, 0, 2.3), (.45, .45, .45), (0, 0.3, 0))
 
         # Bille
-        bille = Sphere((-0.8, .2, 3.5), 1, (1, 1, 0), 1)   
+        self.bille_start = (-0.8, .2, 3.5)
+        self.bille_end = (-0.8, .2, 3.5)
+        bille = Sphere((-0.8, .2, 3.5), 1, (1, 0, 0), .9)   
 
         # Instance des sources lumineuses
+        
         light1 = Light((-2, -1, 0), 1, (1, 1, 1))
 
         # Ajout de la camera, des objets géométriques et des sources lumineuses à la scène
@@ -71,7 +74,8 @@ class Pillule:
         self.scene.add_object(cylindre_H)
         self.scene.add_object(cylindre_B)
         self.scene.add_object(sphere_B)
-        self.scene.add_object(cube_b)
         self.scene.add_object(balle)
+        self.scene.add_object(cube_b)
         self.scene.add_object(cube)
         self.scene.add_object(bille)
+        self.bille_id = self.scene.nb_objet

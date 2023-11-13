@@ -20,7 +20,8 @@ class Sphere:
         self.type = "sphere"
         self.center = Vector3D(*center)  # Centre de la sphère
         self.radius = radius  # Rayon de la sphère
-        self.color = color  # Couleur de la sphère
+        # self.color = color  # Couleur de la sphère
+        self.color = (color[0] * (1-reflexion), color[1] * (1-reflexion), color[2] * (1-reflexion))
         self.reflexion = reflexion  # Propriétés de reflexion de la sphère
         
         self.incident_direction = None
@@ -70,19 +71,16 @@ class Sphere:
 
     # Rendu de reflexion
     def reflet(self, scene, ray, depth=0, max_depth=5):
-        #  Initialisation de la couleur en Noir
-        self.color = (self.color[0] * (1-self.reflexion), self.color[1] * (1-self.reflexion), self.color[2] * (1-self.reflexion)) 
-
         color_vec = scene.color_fond
+        
+        # Intersection avec les objets de la scène
+        closest_intersection = None
+        obj = None
         
         for o in scene.objects:
             if o.reflexion <= 0:
                 # Initialisation de la couleur par défaut
-                light_color = Vector3D(0, 0, 0)
-            
-                # Intersection avec les objets de la scène
-                closest_intersection = None
-                obj = None
+                light_color = Vector3D(0, 0, 0)            
             
                 intersection = o.intersect(ray) # tuple(t, hit_point, color)
             
@@ -110,7 +108,7 @@ class Sphere:
                 # Gestion de l'ombrage
                 if obj is not None:            
                     t, hit_point, color = closest_intersection
-                    obj_color = Vector3D(color[0], color[1], color[2])
+                    obj_color = Vector3D(color[0], color[1], color[2]) 
                     normal = obj.normal(hit_point)  # Calcul la normale à la surface au point d'intersection
                     
                     # Lumière ambiante (diffuse)
